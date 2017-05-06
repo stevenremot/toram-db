@@ -479,8 +479,14 @@ Object subclass: #ToramDbStorage
 !ToramDbStorage methodsFor: 'accessing'!
 
 read
-	^ (JSON parse: (storage getItem: 'toram-records'))
-		collect: [ :rawRecord | self readRecord: rawRecord ]
+	| entry |
+	entry := storage getItem: 'toram-records'.
+	
+	^ entry ifNil: [ #() ]
+		ifNotNil: [ 
+			(JSON parse: entry)
+				collect: [ :rawRecord | self readRecord: rawRecord ]
+		]
 !
 
 readRecord: aRawRecord

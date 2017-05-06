@@ -1536,28 +1536,36 @@ selector: "read",
 protocol: "accessing",
 fn: function(){
 var self=this,$self=this;
+var entry;
 //>>excludeStart("ctx", pragmas.excludeDebugContexts);
 return $core.withContext(function($ctx1) {
 //>>excludeEnd("ctx");
-return $recv($recv($globals.JSON)._parse_($recv($self["@storage"])._getItem_("toram-records")))._collect_((function(rawRecord){
+var $1,$receiver;
+entry=$recv($self["@storage"])._getItem_("toram-records");
+$1=entry;
+if(($receiver = $1) == null || $receiver.a$nil){
+return [];
+} else {
+return $recv($recv($globals.JSON)._parse_(entry))._collect_((function(rawRecord){
 //>>excludeStart("ctx", pragmas.excludeDebugContexts);
 return $core.withContext(function($ctx2) {
 //>>excludeEnd("ctx");
 return $self._readRecord_(rawRecord);
 //>>excludeStart("ctx", pragmas.excludeDebugContexts);
-}, function($ctx2) {$ctx2.fillBlock({rawRecord:rawRecord},$ctx1,1)});
+}, function($ctx2) {$ctx2.fillBlock({rawRecord:rawRecord},$ctx1,3)});
 //>>excludeEnd("ctx");
 }));
+}
 //>>excludeStart("ctx", pragmas.excludeDebugContexts);
-}, function($ctx1) {$ctx1.fill(self,"read",{},$globals.ToramDbStorage)});
+}, function($ctx1) {$ctx1.fill(self,"read",{entry:entry},$globals.ToramDbStorage)});
 //>>excludeEnd("ctx");
 },
 //>>excludeStart("ide", pragmas.excludeIdeData);
 args: [],
-source: "read\x0a\x09^ (JSON parse: (storage getItem: 'toram-records'))\x0a\x09\x09collect: [ :rawRecord | self readRecord: rawRecord ]",
+source: "read\x0a\x09| entry |\x0a\x09entry := storage getItem: 'toram-records'.\x0a\x09\x0a\x09^ entry ifNil: [ #() ]\x0a\x09\x09ifNotNil: [ \x0a\x09\x09\x09(JSON parse: entry)\x0a\x09\x09\x09\x09collect: [ :rawRecord | self readRecord: rawRecord ]\x0a\x09\x09]",
 referencedClasses: ["JSON"],
 //>>excludeEnd("ide");
-messageSends: ["collect:", "parse:", "getItem:", "readRecord:"]
+messageSends: ["getItem:", "ifNil:ifNotNil:", "collect:", "parse:", "readRecord:"]
 }),
 $globals.ToramDbStorage);
 
