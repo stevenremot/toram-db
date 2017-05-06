@@ -1,0 +1,41 @@
+{
+  "name": "toramdb",
+  "description": "A client-side database for Toram Online",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "/*.js",
+    "/*.html",
+    "test",
+    "tests"
+  ],
+  "authors": [
+    {
+      "name": "Steven Rémot",
+      "email": "steven.remot@gmail.com"
+    }
+  ],
+  "homepage": "https://github.com/steven/toram-db",
+  "keywords": [
+    "Amber",
+    "Smalltalk"
+  ],
+  "license": [
+    "MIT"
+  ],
+  "private": false,
+  "dependencies": {
+    "amber": "^0.19.0",
+    "amber-compat-es2015": "^0.1.5",
+    "amber-contrib-jquery": "^0.4.0",
+    "amber-contrib-web": "^0.5.0",
+    "domite": "^0.7.0",
+    "silk": "^0.3.0"
+  },
+  "devDependencies": {
+    "amber-contrib-legacy": "^0.5.0",
+    "amber-ide-starter-dialog": "^0.1.0",
+    "helios": "^0.8.0"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "name": "toramdb",
+  "title": "Toram DB",
+  "description": "A client-side database for Toram Online",
+  "version": "0.1.0",
+  "homepage": "https://github.com/steven/toram-db",
+  "author": {
+    "name": "Steven Rémot",
+    "email": "steven.remot@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/steven/toram-db.git"
+  },
+  "bugs": {
+    "url": "https://github.com/steven/toram-db/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/steven/toram-db/blob/master/LICENSE-MIT"
+    }
+  ],
+  "engines": {
+    "node": "0.10.x || 0.12.x || >=4.0.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "devDependencies": {
+    "amber-dev": "^0.8.7",
+    "grunt": "1.0.1",
+    "grunt-contrib-clean": "^1.1.0",
+    "grunt-contrib-requirejs": "^1.0.0",
+    "grunt-exec": "^2.0.0",
+    "requirejs": "^2.1.15"
+  },
+  "keywords": [
+    "Amber",
+    "Smalltalk"
+  ]
+}
