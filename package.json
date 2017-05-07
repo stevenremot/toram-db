@@ -25,7 +25,8 @@
     "node": "0.10.x || 0.12.x || >=4.0.0"
   },
   "scripts": {
-    "test": "grunt test"
+    "test": "grunt test",
+    "deploy": "grunt deploy && cp the.js docs/"
   },
   "devDependencies": {
     "amber-dev": "^0.8.7",

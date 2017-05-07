@@ -17,7 +17,7 @@ bower install
 grunt devel
 ```
 
-Then un `amber serve` in the project folder. The source packages or ToramDb and ToramDb-Tests.
+Then un `amber serve` in the project folder. The source packages are those starting with `ToramDb`.
 
 ## Deploy
 
