@@ -28,27 +28,6 @@ initialize
 
 !ToramDbEditPage methodsFor: 'rendering'!
 
-renderInput: inputName callback: aBlock value: aValue on: html
-	html div
-		class: 'row';
-		with: (
-			html div
-				class: 'input-field col s12';
-				with: (
-					html input
-						type: 'text';
-						id: inputName;
-						value: aValue;
-						onChange: aBlock
-				);
-				with: (
-					html label
-						for: inputName;
-						with: inputName
-				)
-		)
-!
-
 renderOn: html
 	| form formCanvas |
 	form := html form
@@ -57,33 +36,40 @@ renderOn: html
 			submitBlock value: name value: monsters value: places.
 			event preventDefault
 		].
-		
-	formCanvas := HTMLCanvas onJQuery: form asJQuery.
 	
-	self 
-		renderInput: 'Name'
-		callback: [ :event | name := event target value ]
-		value: name
-		on: formCanvas;
-		
-		renderInput: 'Monsters'
-		callback: [ :event | monsters := event target value ]
-		value: monsters
-		on: formCanvas;
-		
-		renderInput: 'Places'
-		callback: [ :event | places := event target value ]
-		value: places
-		on: formCanvas.
-		
-	formCanvas div
-		class: 'container';
-		with: (
-			formCanvas button
-				class: 'btn waves-effet waves-light';
-				type: 'submit';
-				with: (name = '' ifTrue: 'Create' ifFalse: 'Edit')
+	form with: (
+		ToramDbTextInput
+			label: 'Name'
+			value: name
+			onChange: [ :event | name := event target value ]
 		).
+	
+	form with: (
+		ToramDbTextInput
+			label: 'Monsters'
+			value: monsters
+			onChange: [ :event | monsters := event target value ]
+		).
+	
+	form with: (
+		ToramDbTextInput
+			label: 'Places'
+			value: places
+			onChange: [ :event | places := event target value ]
+		).
+		
+	form with: (html div
+		class: 'row';
+		with: (
+			html div
+				class: 'input-field col s12';
+				with: (
+					ToramDbButton
+						label: (name = '' ifTrue: 'Create' ifFalse: 'Edit')
+						type: 'submit'
+				)
+		)
+	).
 		
 	window Materialize updateTextFields
 ! !
@@ -142,14 +128,16 @@ renderOn: html
 		with: (html p with: record monsters);
 		with: (html h2 with: 'Places');
 		with: (html p with: record places);
-		with: (html a 
-			class: 'btn';
-			href: '#edit/', record name;
-			with: 'Edit');
-	
-		with: (html button
-			class: 'btn';
-			onClick: removeBlock;
-			with: 'Delete')
+		with: (html div
+			class: 'row';
+			with: (html div
+				class: 'col s6';
+				with: (ToramDbLinkButton label: 'Edit' href: '#edit/', record name)
+			);
+			with: (html div
+				class: 'col s6';
+				with: (ToramDbButton label: 'Delete' type: 'button' onClick: removeBlock)
+			)
+		)
 ! !
 
