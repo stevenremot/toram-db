@@ -1,0 +1,19 @@
+{
+  "short_name": "ToramDB",
+  "name": "ToramDB",
+  "start_url": "index.html",
+  "display": "standalone",
+  "theme_color": "#ee6e73",
+  "icons": [
+    {
+      "src": "icon128.png",
+      "type": "image/png",
+      "sizes": "128x128"
+    },
+    {
+      "src": "icon256.png",
+      "type": "image/png",
+      "sizes": "256x256"
+    }
+  ]
+}
